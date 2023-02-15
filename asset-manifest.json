@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/cloneTving/static/css/main.1a64548e.css",
+    "main.js": "/cloneTving/static/js/main.a6d5f969.js",
+    "static/js/787.683d38a8.chunk.js": "/cloneTving/static/js/787.683d38a8.chunk.js",
+    "static/media/PretendardVariable.woff2": "/cloneTving/static/media/PretendardVariable.36b3a87cd98126711b2b.woff2",
+    "index.html": "/cloneTving/index.html",
+    "main.1a64548e.css.map": "/cloneTving/static/css/main.1a64548e.css.map",
+    "main.a6d5f969.js.map": "/cloneTving/static/js/main.a6d5f969.js.map",
+    "787.683d38a8.chunk.js.map": "/cloneTving/static/js/787.683d38a8.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1a64548e.css",
+    "static/js/main.a6d5f969.js"
+  ]
+}
