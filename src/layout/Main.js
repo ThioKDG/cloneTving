@@ -4,22 +4,33 @@ import { motion } from 'framer-motion';
 import Movie from '../components/Movie';
 import './layStyles/mainStyle.scss';
 
+export const rowVars = {
+   start : {
+      opacity: 0,
+   },
+   visible : { opacity: 1 },
+   exit: {
+      opacity: 0,
+   }
+};
 function Main() {
    const key ='028c17a1ddc55dc7822f3f89fb10cd89';
    const [program, setProgram] = useState([]);
    const [index, setIndex] = useState(0);
    const increaseIndex = () => {
-      if(index){
+      if(program){
             const total = 5;
             setIndex((prev)=>(prev === total ?  0 : prev + 1));
          }
    };
    const decreaseIndex = () =>{
-      if(index){
+      if(program){
          const total = 0;
          setIndex((prev) => (prev === total ? 5 : prev - 1));
       }
    }
+
+
    const page = 1;
    const imageUrl = 'https://image.tmdb.org/t/p/original';
 
@@ -28,7 +39,7 @@ function Main() {
          const programList = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${key}&language=ko-KR&with_watch_providers=8&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_watch_monetization_types=flatrate`);
          // console.log(programList.data)
          setProgram(programList.data.results);  
-         console.log(programList.data); 
+         // console.log(programList.data); 
       };
       getProgram();
    }, []);
@@ -39,10 +50,13 @@ function Main() {
                return(
                   <>
                      <motion.img
+                        variants={rowVars}
                         className='recomMovie'
                         key={index}
-                        inital='normal'
-                        transition={{ type: "tween" }}
+                        inital='start'
+                        animate='visible'
+                        exit='exit'
+                        transition={{ type: "tween", duration:1 }}
                         src={imageUrl + item.backdrop_path}
                      />
                      <h3 className='movieName'>{item.title}</h3>
