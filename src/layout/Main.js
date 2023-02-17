@@ -36,8 +36,7 @@ function Main() {
 
    useEffect(() => {
       const getProgram = async() =>{
-         const programList = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${key}&language=ko-KR&with_watch_providers=8&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_watch_monetization_types=flatrate`);
-         // console.log(programList.data)
+         const programList = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${key}&language=ko-KR&with_watch_providers=8&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_watch_providers=337&with_watch_monetization_types=flatrate`);
          setProgram(programList.data.results);  
          // console.log(programList.data); 
       };

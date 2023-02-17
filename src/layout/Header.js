@@ -11,17 +11,6 @@ function Header() {
                   <span className='hiddenWord'>로고</span>
                </Link>
             </h1>
-            <ul className='navList'>
-               <li>
-                  <Link to='/'>실시간</Link>
-               </li>
-               <li>
-                  <Link to='/'>tv프로그램</Link>
-               </li>
-               <li>
-                  <Link to='/'>영화</Link>
-               </li>
-            </ul>
          </nav>
       </header>
    );
