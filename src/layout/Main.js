@@ -50,10 +50,10 @@ function Main() {
                return(
                   <>
                      <motion.img
-                        variants={rowVars}
                         className='recomMovie'
+                        variants={rowVars}
                         key={index}
-                        inital='start'
+                        initial='start'
                         animate='visible'
                         exit='exit'
                         transition={{ type: "tween", duration:1 }}

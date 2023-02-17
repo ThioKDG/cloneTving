@@ -1,0 +1,51 @@
+@import '../../assets/style/variable.scss';
+
+
+.contWrapper{
+   position: relative;
+   width:100%;
+   height:100%;
+   overflow: hidden;   
+   .filmBlack{
+      width:100%;
+      height:100%;
+      img{
+         filter: blur(10px);
+         -webkit-filter: blur(10px);
+         width:100%;
+         object-fit: cover;
+      }
+      &::after{
+         content: '';
+         background-color: rgba($color: #000000, $alpha: .5);
+         display:block;
+         position: absolute;
+         top:0;
+         left:0;
+         width:100%;
+         height:100%;
+
+      }  
+   }
+   .contInfo{
+      position: absolute;
+      z-index:9;
+      top:0;
+      color:#fff;
+      width:100%;
+      height:100%;  
+      margin-top:90px;
+      .infoPlus{
+         display: flex;
+         margin:0 auto;
+         width:90vw;
+         height:50vh;
+         padding: 2.625em 0 3.875em;
+         border-bottom:1px solid rgba($color: #fff, $alpha: .5);
+         .contTit{
+            font-size:45px;
+            font-weight:800;
+         }
+      }
+   }
+}

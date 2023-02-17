@@ -20,6 +20,7 @@
       }
       .swiper{
          --swiper-theme-color:#fff;
+         width:100%;
          &:hover{
             .swiper-button-next, .swiper-button-prev, .swiper-pagination{
                opacity: 1;
@@ -41,6 +42,9 @@
                }
                &:hover{
                   transform: translateY(-10px);
+               }
+               .toNavi{
+                  cursor: pointer;
                }
             }
          }

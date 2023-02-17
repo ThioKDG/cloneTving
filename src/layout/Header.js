@@ -7,7 +7,9 @@ function Header() {
       <header>
          <nav className='navWrapper'>
             <h1 className='h1Logo'>
-               <span className='hiddenWord'>로고</span>
+               <Link to='/'>
+                  <span className='hiddenWord'>로고</span>
+               </Link>
             </h1>
             <ul className='navList'>
                <li>

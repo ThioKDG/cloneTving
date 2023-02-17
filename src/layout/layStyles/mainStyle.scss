@@ -35,8 +35,13 @@
             height: 100%;
             object-fit: contain;
             cursor: pointer;
+            &:hover{
+               path{
+                  fill:rgba($color: #fff, $alpha: 1.0);
+               }
+            }
             path{
-               fill:#fff;
+               fill:rgba($color: #fff, $alpha: .5);
             }
          }
 

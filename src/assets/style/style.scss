@@ -8,6 +8,20 @@
 }
 body{
    font-family: $pretendard;
+   /* 드래그 방지 */
+   -webkit-user-select: none;
+   -moz-user-select: none;
+   -ms-use-select: none;
+   user-select: none;
+   background-color: #000;
+}
+img{
+   /* 이미지 드래그 방지 */
+   -webkit-user-drag: none;
+   -khtml-user-drag: none;
+   -moz-user-drag: none;
+   -o-user-drag: none;
+   user-drag: none;
 }
 
 /* hidden Word / 접근성을 위한 숨김 글자 */

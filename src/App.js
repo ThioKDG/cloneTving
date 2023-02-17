@@ -3,6 +3,7 @@ import './assets/style/style.scss';
 
 import Movie from './components/Movie';
 import Main from './layout/Main';
+import Contents from './components/Contents';
 import NotFoundPage from './layout/NotFoundPage';
 import Header from './layout/Header';
 
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Main />} />
         <Route path='*' element={<NotFoundPage />} />
+        <Route path='/cont/:id' element={<Contents />} />
       </Routes>
     </>
   );

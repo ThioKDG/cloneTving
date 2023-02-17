@@ -5,15 +5,25 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import './compStyle/movieStyle.scss';  
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useRef, useState } from "react";
 
 function Movie({ program }) {
+   const navigate = useNavigate();
+   const [mouseMove, setMouseMove] = useState(false);
+
+   const evtClick = (id) => {
+      if(!mouseMove) {
+         navigate(`/cont/${id}`);
+      }
+   };
+
    const a11ys = {
       a11y : {
          prevSlideMessage : '이전 슬라이드',
          nextSlideMessage : '다음 슬라이드'
       }
-   }
+   };
 
    const imageUrl = 'https://image.tmdb.org/t/p/original';
 
@@ -29,7 +39,7 @@ function Movie({ program }) {
                   rows: 7,
                 }}
                centeredSlides={true}
-               spaceBetween={10}
+               spaceBetween={5}
                grabCursor={true}
                pagination={{
                  clickable: true,
@@ -40,10 +50,13 @@ function Movie({ program }) {
             >
                {program.map((item) => (
                   <SwiperSlide key={item.id}>
-                     <Link to="/" >
+                     <div 
+                        className="toNavi" 
+                        onClick={() => evtClick(item.id)}
+                     >
                         <img src={ imageUrl + item.poster_path } alt={item.title} />
                         <h3 className="itemTit">{item.title}</h3>
-                     </Link>
+                     </div>
                   </SwiperSlide>
                ))}
             </Swiper>
