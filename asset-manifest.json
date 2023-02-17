@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/cloneTving/static/css/main.f696b5df.css",
-    "main.js": "/cloneTving/static/js/main.67e8b40f.js",
+    "main.css": "/cloneTving/static/css/main.2678ab9e.css",
+    "main.js": "/cloneTving/static/js/main.88d78b30.js",
     "static/js/787.683d38a8.chunk.js": "/cloneTving/static/js/787.683d38a8.chunk.js",
     "static/media/PretendardVariable.woff2": "/cloneTving/static/media/PretendardVariable.36b3a87cd98126711b2b.woff2",
     "static/media/tving-new-logo-pc.svg": "/cloneTving/static/media/tving-new-logo-pc.66b6dfc64cb41128f649.svg",
     "static/media/icon_menu_live.svg": "/cloneTving/static/media/icon_menu_live.0ba46853479c85e85a2d.svg",
     "index.html": "/cloneTving/index.html",
-    "main.f696b5df.css.map": "/cloneTving/static/css/main.f696b5df.css.map",
-    "main.67e8b40f.js.map": "/cloneTving/static/js/main.67e8b40f.js.map",
+    "main.2678ab9e.css.map": "/cloneTving/static/css/main.2678ab9e.css.map",
+    "main.88d78b30.js.map": "/cloneTving/static/js/main.88d78b30.js.map",
     "787.683d38a8.chunk.js.map": "/cloneTving/static/js/787.683d38a8.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f696b5df.css",
-    "static/js/main.67e8b40f.js"
+    "static/css/main.2678ab9e.css",
+    "static/js/main.88d78b30.js"
   ]
 }
