@@ -24,7 +24,7 @@ function Movie({ program }) {
          nextSlideMessage : '다음 슬라이드'
       }
    };
-
+   console.log(program.title);
    const imageUrl = 'https://image.tmdb.org/t/p/original';
 
    return (
@@ -36,7 +36,7 @@ function Movie({ program }) {
             <Swiper className='movieList swiper-initialized swiper-horizontal swiper-pointer-events' {...a11ys}
                slidesPerView={1}
                grid={{
-                  rows: 6,
+                  rows: 7,
                 }}
                centeredSlides={true}
                spaceBetween={5}
@@ -60,6 +60,7 @@ function Movie({ program }) {
                   </SwiperSlide>
                ))}
             </Swiper>
+            
          </div>
       </div>
    );

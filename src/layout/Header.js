@@ -7,7 +7,7 @@ function Header() {
    const [navi, setNavi] = useState(false);
    useEffect(() => {
       const scrollHandler = () => {
-         window.scrollY >= 90 ? setNavi(true) : setNavi(false);
+         window.scrollY >= 100 ? setNavi(true) : setNavi(false);
       }
       window.addEventListener('scroll', scrollHandler);
       

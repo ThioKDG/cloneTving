@@ -44,7 +44,6 @@
                fill:rgba($color: #fff, $alpha: .5);
             }
          }
-
       }
       .movieName{
          font-size:3.438em;
@@ -55,6 +54,28 @@
          left:3%;
          z-index: 9;
          color:#fff;
+      }
+      .watchMore{
+         position: absolute;
+         bottom:20%;
+         right:5%;
+         z-index:99;
+         .backDropBtn{
+            border:1px solid rgba($color: #fff, $alpha: .7);
+            border-radius: 5px;
+            display: block;
+            backdrop-filter: blur(30px);
+            padding:20px 60px;
+            color:#fff;
+            font-size:20px;
+            opacity: .9;
+            transition: .3s;
+            cursor: pointer;
+            &:hover{
+               border-color:#fff;
+               opacity: 1;
+            }
+         }
       }
    }
 }

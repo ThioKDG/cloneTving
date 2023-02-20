@@ -36,7 +36,7 @@ function MovieTrailer(props) {
          <>
             <ReactPlayer
                url={youtube + tube.key}
-               volume={0}
+               volume={0.5}
                controls={false}
                playing={true}
                muted={false}
