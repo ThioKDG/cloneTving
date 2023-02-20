@@ -1,0 +1,43 @@
+@import '../../assets/style/variable.scss';
+
+footer{
+   width:100%;
+   .wrapper{
+      padding: 6.813em 3.791em 9.375em;
+      .footerTop{
+         color:rgba($color: #fff, $alpha: .5);
+         .notice{
+            display:flex;
+            gap:30px;
+            border-bottom:1px solid rgba($color: #fff, $alpha: .5);
+            padding:15px 0;
+            font-size:20px;
+            a{
+               &:nth-child(2){
+                  &:hover{
+                     color:rgba($color: #dedede, $alpha: 1);
+                  }
+               }
+            }
+         }
+         .about{
+            padding:15px 0;
+            display:flex;
+            gap:25px;
+            font-size:20px;
+            a{
+               &:hover{
+                  color:rgba($color: #dedede, $alpha: 1);
+               }
+            }
+         }
+         .copyRightContainer{
+            font-size:17px;
+            padding-bottom:15px;
+            .copyRight{
+               margin-top:15px;
+            }
+         }
+      }
+   }
+}

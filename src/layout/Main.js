@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import Movie from '../components/Movie';
 import './layStyles/mainStyle.scss';
+import Footer from './Footer';
 
 export const rowVars = {
    start : {
@@ -16,7 +17,9 @@ export const rowVars = {
 function Main() {
    const key ='028c17a1ddc55dc7822f3f89fb10cd89';
    const [program, setProgram] = useState([]);
+   const [tvProgram, setTvProgram] = useState([]);
    const [index, setIndex] = useState(0);
+
    const increaseIndex = () => {
       if(program){
             const total = 5;
@@ -36,13 +39,19 @@ function Main() {
 
    useEffect(() => {
       const getProgram = async() =>{
-         const programList = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${key}&language=ko-KR&with_watch_providers=8&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_watch_providers=337&with_watch_monetization_types=flatrate`);
+         const programList = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${key}&language=ko-KR&with_watch_providers=8&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_watch_providers=8&with_watch_monetization_types=flatrate`);
          setProgram(programList.data.results);  
-         // console.log(programList.data); 
       };
+      const getTvList = async() => {
+         const tvList = await axios.get(`https://api.themoviedb.org/3/discover/tv?api_key=${key}&language=ko-KR&sort_by=popularity.desc&page=${page}&timezone=Aisa%2FSeoul&include_null_first_air_dates=false&with_watch_providers=8&with_watch_monetization_types=flatrate&with_status=0&with_type=0`);
+         setTvProgram(tvList);
+      } 
+      console.log(tvProgram);
       getProgram();
+      getTvList();
    }, []);
    return (
+      <>
       <section className='contentWrapper'>
          <div className='recommendCont'>
             {program.slice(index, index + 1).map((item) => {
@@ -83,6 +92,8 @@ function Main() {
          </div>
          <Movie program={program} />
       </section>
+      <Footer />
+      </>
    );
 }
 
