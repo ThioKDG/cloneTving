@@ -23,7 +23,6 @@ function Contents(props) {
          const contDetail = await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${key}&language=ko-KR`);
          setCont(contDetail.data);
       };
-      console.log(cont);
       getDetail();
    }, [id]);
 
@@ -48,7 +47,7 @@ function Contents(props) {
                                  </p>
                               ) : (
                                  <p className="watchTeenager">
-                                    15
+                                    청소년 시청가능
                                  </p>
                               )}
                               <p>{cont.release_date.slice(0, 4)}</p>

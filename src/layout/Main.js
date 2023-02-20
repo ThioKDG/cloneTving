@@ -46,7 +46,7 @@ function Main() {
          const tvList = await axios.get(`https://api.themoviedb.org/3/discover/tv?api_key=${key}&language=ko-KR&sort_by=popularity.desc&page=${page}&timezone=Aisa%2FSeoul&include_null_first_air_dates=false&with_watch_providers=8&with_watch_monetization_types=flatrate&with_status=0&with_type=0`);
          setTvProgram(tvList);
       } 
-      console.log(tvProgram);
+      // console.log(tvProgram);
       getProgram();
       getTvList();
    }, []);

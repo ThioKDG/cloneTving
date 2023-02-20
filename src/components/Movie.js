@@ -36,7 +36,7 @@ function Movie({ program }) {
             <Swiper className='movieList swiper-initialized swiper-horizontal swiper-pointer-events' {...a11ys}
                slidesPerView={1}
                grid={{
-                  rows: 7,
+                  rows: 6,
                 }}
                centeredSlides={true}
                spaceBetween={5}

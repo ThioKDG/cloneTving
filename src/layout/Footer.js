@@ -20,7 +20,7 @@ function Footer(props) {
                   <Link to='/'>인재채용</Link>
                </div>
                <div className="copyRightContainer">
-                  <p><span>본페이지는 티빙 홈페이지 일부를 클론 코딩한것입니다.</span></p>
+                  <p><span>티빙티빙</span></p>
                   <p className="copyRight">Copyright &copy; 주식회사 티빙 All right reserved.</p>
                </div>
             </div>
