@@ -6,16 +6,18 @@ import Main from './layout/Main';
 import Contents from './components/Contents';
 import NotFoundPage from './layout/NotFoundPage';
 import Header from './layout/Header';
+import MainLayout from './layout/MainLayout';
 import MovieTrailer from './components/MovieTrailer';
 
 function App() {
   return (
     <>
-      <Header />
       <Routes>
-        <Route path='/' element={<Main />} />
+        <Route element={<MainLayout />}>
+          <Route path='/' element={<Main />} />
+          <Route path='/cont/:id' element={<Contents />} />
+        </Route>
         <Route path='*' element={<NotFoundPage />} />
-        <Route path='/cont/:id' element={<Contents />} />
         <Route path='/cont/trailer/:id' element={<MovieTrailer />} />
       </Routes>
     </>

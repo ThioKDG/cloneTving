@@ -16,7 +16,7 @@ export const rowVars = {
    }
 };
 function Main() {
-   const key ='028c17a1ddc55dc7822f3f89fb10cd89';
+   const key = process.env.REACT_APP_TDMB_KEY;
    const navigate = useNavigate();
    const [program, setProgram] = useState([]);
    /* const [tvProgram, setTvProgram] = useState([]); */
@@ -98,7 +98,6 @@ function Main() {
          </div>
          <Movie program={program} />
       </section>
-      <Footer />
       </>
    );
 }

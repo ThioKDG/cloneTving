@@ -80,7 +80,6 @@ function Contents(props) {
                </div>
             </article>
          </section>
-         <Footer />
       </>
    );
 }
