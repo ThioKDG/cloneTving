@@ -34,7 +34,6 @@ function Main() {
          setIndex((prev) => (prev === total ? 5 : prev - 1));
       }
    }
-   console.log(program);
    const page = 1;
    const imageUrl = 'https://image.tmdb.org/t/p/original';
 

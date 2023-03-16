@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, A11y, Grid } from "swiper";
+/* import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, A11y, Grid } from "swiper"; */
 
 import './compStyle/contStyle.scss';
 
@@ -17,15 +17,8 @@ function Contents(props) {
    const imageUrl = 'https://image.tmdb.org/t/p/original';
    const key = process.env.REACT_APP_TDMB_KEY;
 
-   const [cont, setCont] = useState([]);
-   const [recommend, setRecommend] = useState([ ]);
-
-   const a11ys = {
-      a11y : {
-         prevSlideMessage : '이전 슬라이드',
-         nextSlideMessage : '다음 슬라이드'
-      }
-   };
+   const [cont, setCont] = useState(null);
+   const [recommend, setRecommend] = useState([]);
 
    useEffect(() => {
       const getDetail = async() => {
@@ -34,7 +27,7 @@ function Contents(props) {
       };
       const getSimilar = async() => {
          const contRecommend = await axios.get(`https://api.themoviedb.org/3/movie/${id}/similar?api_key=${key}&language=ko-KR&page=1`)
-         setRecommend(contRecommend.data);
+         setRecommend(contRecommend.data.results);
       };
       getDetail();
       getSimilar();
@@ -92,40 +85,16 @@ function Contents(props) {
                   </div>
                </div>
                <div className="similarList">
-                  {
-                     cont &&(
+                  { cont &&(
                         <h3 className='similarH3'>{cont.title} 비슷한 장르의 영화들</h3>
-                     )
-                  }
-                  {
-                     recommend && (
-                    <Swiper className='movieList swiper-initialized swiper-horizontal swiper-pointer-events' {...a11ys}
-                     slidesPerView={1}
-                     grid={{
-                        rows: 7,
-                     }}
-                     centeredSlides={true}
-                     spaceBetween={5}
-                     grabCursor={true}
-                     pagination={{
-                     clickable: true,
-                     }}
-                     // pagination={true}
-                     navigation={true}
-                     modules={[Navigation, A11y, Pagination, Grid]}
-                  >
-                     {recommend.map((item) => (
-                        <SwiperSlide key={item.id}>
-                           <div>
-                              <img src={ imageUrl + item.poster_path } alt={item.title} />
-                              <h3 className="itemTit">{item.title}</h3>
-                           </div>
-                        </SwiperSlide>
-                     ))}
-                  </Swiper>
-
-                     )
-                  }
+                  )}
+                  <ul>
+                  {recommend && recommend.map((item) => (
+                     <li key={item.id}>
+                        <img src={imageUrl + item.poster_path} alt={item.title} />
+                     </li>
+                  ))}
+                  </ul>
                </div>
             </article>
          </section>  
