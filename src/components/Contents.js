@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import Footer from '../layout/Footer';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, A11y, Grid } from "swiper";
 
 import './compStyle/contStyle.scss';
 
@@ -14,18 +15,30 @@ function Contents(props) {
    }
 
    const imageUrl = 'https://image.tmdb.org/t/p/original';
-   const key =process.env.REACT_APP_TDMB_KEY;
+   const key = process.env.REACT_APP_TDMB_KEY;
 
-   const [cont, setCont] = useState(null);
+   const [cont, setCont] = useState([]);
+   const [recommend, setRecommend] = useState([ ]);
+
+   const a11ys = {
+      a11y : {
+         prevSlideMessage : '이전 슬라이드',
+         nextSlideMessage : '다음 슬라이드'
+      }
+   };
 
    useEffect(() => {
       const getDetail = async() => {
          const contDetail = await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${key}&language=ko-KR`);
          setCont(contDetail.data);
       };
+      const getSimilar = async() => {
+         const contRecommend = await axios.get(`https://api.themoviedb.org/3/movie/${id}/similar?api_key=${key}&language=ko-KR&page=1`)
+         setRecommend(contRecommend.data);
+      };
       getDetail();
+      getSimilar();
    }, [id]);
-
    return (
       <>
          <section className='contWrapper'>
@@ -70,7 +83,7 @@ function Contents(props) {
                         <div className='whiteBtn' onClick={() => viewTrailer(id)}>
                            <span>예고편 보기</span>
                         </div>
-                     </div>
+                     </div>   
                   </div>
                   <div className="infoPoster">
                      { cont && (
@@ -78,11 +91,44 @@ function Contents(props) {
                      )}
                   </div>
                </div>
-               <div className="sameList">
-                  
+               <div className="similarList">
+                  {
+                     cont &&(
+                        <h3 className='similarH3'>{cont.title} 비슷한 장르의 영화들</h3>
+                     )
+                  }
+                  {
+                     recommend && (
+                    <Swiper className='movieList swiper-initialized swiper-horizontal swiper-pointer-events' {...a11ys}
+                     slidesPerView={1}
+                     grid={{
+                        rows: 7,
+                     }}
+                     centeredSlides={true}
+                     spaceBetween={5}
+                     grabCursor={true}
+                     pagination={{
+                     clickable: true,
+                     }}
+                     // pagination={true}
+                     navigation={true}
+                     modules={[Navigation, A11y, Pagination, Grid]}
+                  >
+                     {recommend.map((item) => (
+                        <SwiperSlide key={item.id}>
+                           <div>
+                              <img src={ imageUrl + item.poster_path } alt={item.title} />
+                              <h3 className="itemTit">{item.title}</h3>
+                           </div>
+                        </SwiperSlide>
+                     ))}
+                  </Swiper>
+
+                     )
+                  }
                </div>
             </article>
-         </section>
+         </section>  
       </>
    );
 }
