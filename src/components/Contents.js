@@ -14,7 +14,7 @@ function Contents(props) {
    }
 
    const imageUrl = 'https://image.tmdb.org/t/p/original';
-   const key ='028c17a1ddc55dc7822f3f89fb10cd89';
+   const key =process.env.REACT_APP_TDMB_KEY;
 
    const [cont, setCont] = useState(null);
 
@@ -43,7 +43,7 @@ function Contents(props) {
                            <div className="tag tagGenres">
                               {cont.adult ? (
                                  <p className="watchAdult">
-                                    18
+                                    청소년 시청불가
                                  </p>
                               ) : (
                                  <p className="watchTeenager">
@@ -77,6 +77,9 @@ function Contents(props) {
                         <img src={imageUrl + cont.poster_path} alt={cont.title} />
                      )}
                   </div>
+               </div>
+               <div className="sameList">
+                  
                </div>
             </article>
          </section>
