@@ -1,9 +1,9 @@
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, A11y, Grid } from "swiper";
+
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-/* import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, A11y, Grid } from "swiper"; */
-
 import './compStyle/contStyle.scss';
 
 function Contents(props) {
@@ -13,6 +13,21 @@ function Contents(props) {
    const viewTrailer = (id) => {
       navigate(`/cont/trailer/${id}`); 
    }
+   
+   const [mouseMove, setMouseMove] = useState(false);
+   
+   const a11ys = {
+      a11y : {
+         prevSlideMessage : '이전 슬라이드',
+         nextSlideMessage : '다음 슬라이드'
+      }
+   };
+   
+   const evtClick = (id) => {
+      if(!mouseMove) {
+         navigate(`/cont/${id}`);
+      }
+   };
 
    const imageUrl = 'https://image.tmdb.org/t/p/original';
    const key = process.env.REACT_APP_TDMB_KEY;
@@ -86,15 +101,35 @@ function Contents(props) {
                </div>
                <div className="similarList">
                   { cont &&(
-                        <h3 className='similarH3'>{cont.title} 비슷한 장르의 영화들</h3>
+                        <h3 className='similarH3'><i>{cont.title}</i> 재미있으셨나요? 비슷한 영화들</h3>
                   )}
-                  <ul>
+                  <Swiper className='movieList swiper-initialized swiper-horizontal swiper-pointer-events' {...a11ys}
+                     slidesPerView={1}
+                     grid={{
+                        rows: 7,
+                     }}
+                     centeredSlides={true}
+                     spaceBetween={5}
+                     grabCursor={true}
+                     pagination={{
+                     clickable: true,
+                     }}
+                     // pagination={true}
+                     navigation={true}
+                     modules={[Navigation, A11y, Pagination, Grid]}
+                  >
                   {recommend && recommend.map((item) => (
-                     <li key={item.id}>
-                        <img src={imageUrl + item.poster_path} alt={item.title} />
-                     </li>
+                     <SwiperSlide key={item.id}>
+                        <div 
+                           className="toNavi" 
+                           onClick={() => evtClick(item.id)}
+                        >
+                           <img src={ imageUrl + item.poster_path } alt={item.title} />
+                           <h3 className="itemTit">{item.title}</h3>
+                        </div>
+                     </SwiperSlide>
                   ))}
-                  </ul>
+                  </Swiper>
                </div>
             </article>
          </section>  
