@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, A11y, Grid } from "swiper";
+import { Navigation, A11y, Grid } from "swiper";
 
 import axios from 'axios';
 import { useEffect, useState } from 'react';
@@ -111,12 +111,9 @@ function Contents(props) {
                      centeredSlides={true}
                      spaceBetween={5}
                      grabCursor={true}
-                     pagination={{
-                     clickable: true,
-                     }}
                      // pagination={true}
                      navigation={true}
-                     modules={[Navigation, A11y, Pagination, Grid]}
+                     modules={[Navigation, A11y,Grid]}
                   >
                   {recommend && recommend.map((item) => (
                      <SwiperSlide key={item.id}>
