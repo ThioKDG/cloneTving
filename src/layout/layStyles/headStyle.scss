@@ -64,14 +64,54 @@ header{
    .searchArea{
       background: rgba($color: #000, $alpha: .8);
       width:100%;
+      height:500px;
       display:none;
       justify-content: center;
-      &.open{display:flex;}
+      text-align:center;
+      position: relative;
+      z-index:9;
+      &.on{
+         display: flex;
+      }
       .boxWrapper{
          width:50%;
          display:flex;
+         gap: 25px 0;
          justify-content: center;
          flex-direction:column ;
+         .search{
+            .inputSearch{
+               width:80%;
+               color:#fff;
+               border:2px solid #fff;
+               border-radius: 20px;
+               padding:10px 15px;
+               background:none;
+               margin-right:10px;
+               vertical-align: bottom;
+               font-weight:400;
+               font-size:25px;
+               &::placeholder{
+                  color:#999;
+                  font-weight:600;
+               }
+            }
+            button{
+               border:3px solid #fff;
+               background:none;
+               font-size:20px;
+               font-weight:600;
+               color:#fff;
+               padding:1px 15px;
+               margin-bottom:5px;
+               cursor: pointer;
+               transition: .3s;
+               &:hover{
+                  background-color: #fff;
+                  color:#000;
+               }
+            }
+         }
       }
       .pTitle{
          color:#fff;
