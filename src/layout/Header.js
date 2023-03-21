@@ -9,15 +9,19 @@ function Header() {
    const [navi, setNavi] = useState(false);
    const [btnOn, setBtnOn] = useState(false);
    const [search, setSearch] = useState([]);
-   const searchRef = useRef(null);
+   const [movieName, setMovieName] = useState();
    
+   const changeHandler = (e) =>{
+      setMovieName(e.target.value);
+   }
+   console.log(movieName);
    useEffect(() => {
       const scrollHandler = () => {
-         window.scrollY >= 100 ? setNavi(true) : setNavi(false);
+         window.scrollY >= 100 ? setNavi(true) : setNavi(false)   ;
       }
       window.addEventListener('scroll', scrollHandler);
       const getSearch = async() => {
-         const searchPage = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${key}&language=ko-KR&query=${ddd}page=1&include_adult=false`);
+         const searchPage = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${key}&language=ko-KR&query=${movieName}page=1&include_adult=false`);
          setSearch(searchPage.data);
       }
       getSearch();
@@ -42,8 +46,8 @@ function Header() {
             <div className="boxWrapper">
                <p className='pTitle'>영화 제목으로 검색해보세요</p>
                <div className='search'>
-                  <input className='inputSearch' ref={searchRef} type="text" placeholder='제목입력...' />
-                  <button>검색</button>
+                  <input className='inputSearch' value={movieName} type="text" placeholder='제목입력...' />
+                  <button onClick={changeHandler}>검색</button>
                </div>
             </div>
          </section>
