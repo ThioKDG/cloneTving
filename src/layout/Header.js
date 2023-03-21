@@ -31,7 +31,7 @@ function Header() {
          </nav>
          <section className="searchArea">
             <div className="boxWrapper">
-               <p className='pTitle'>검색하실 영화이름을 입력해주세요</p>
+               <p className='pTitle'>검색할 영화이름을 입력해주세요</p>
                <div className='search'>
                   <input className='inputSearch' ref={searchRef} type="text" />
                   <button>검색</button>

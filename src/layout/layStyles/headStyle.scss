@@ -64,8 +64,9 @@ header{
    .searchArea{
       background: rgba($color: #000, $alpha: .8);
       width:100%;
-      display:flex;
+      display:none;
       justify-content: center;
+      &.open{display:flex;}
       .boxWrapper{
          width:50%;
          display:flex;
