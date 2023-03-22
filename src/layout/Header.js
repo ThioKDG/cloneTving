@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useCallback, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 
 import './layStyles/headStyle.scss';
 
@@ -38,6 +38,8 @@ function Header() {
           `https://api.themoviedb.org/3/search/movie?api_key=${key}&language=ko-KR&query=${movieName}&page=1&include_adult=false`
         );
         setSearch(searchPage.data.results);
+        Navigate(`/search/${search.id}`);
+        
       } catch (error) {
         console.error(error);
       }
@@ -47,8 +49,8 @@ function Header() {
       setMovieName(value);
    }
     
-   console.log(search);
-   console.log(movieName);
+   /* console.log(search);
+   console.log(movieName); */
    return (
       <header>
          <nav className={navi ? 'navWrapper scrolled' : 'navWrapper'}>
