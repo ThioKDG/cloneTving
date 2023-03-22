@@ -28,10 +28,8 @@ function Header() {
       return () => window.removeEventListener('scroll', scrollHandler);
       
    }, []);
-   const changeHandler = async (e) => {
-      const { movieName } = e.target;
-      setMovieName(movieName); // input의 값이 변경될 때마다 movieName 상태 업데이트
-      if (movieName === '') { // 검색어가 없는 경우 빈 배열로 검색 결과 업데이트
+   const changeHandler = async () => {
+      if (movieName === '') {
         alert('검색어를 입력해 주세요.')
         return;
       }
@@ -43,10 +41,14 @@ function Header() {
       } catch (error) {
         console.error(error);
       }
-    };
+   };
+   const changeInputHandler = (e) => {
+      const { value } = e.target;
+      setMovieName(value);
+   }
     
    console.log(search);
-   console.log({movieName});
+   console.log(movieName);
    return (
       <header>
          <nav className={navi ? 'navWrapper scrolled' : 'navWrapper'}>
@@ -65,7 +67,7 @@ function Header() {
             <div className="boxWrapper">
                <p className='pTitle'>영화 제목으로 검색해보세요</p>
                <div className='search'>
-                  <input className='inputSearch' defaultValue={movieName} type="text" placeholder='제목입력...'/>
+                  <input className='inputSearch' onChange={changeInputHandler} value={movieName} type="text" placeholder='제목입력...'/>
                   <button onClick={changeHandler}>검색</button>
                </div>
             </div>
