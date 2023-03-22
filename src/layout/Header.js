@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import './layStyles/headStyle.scss';
@@ -9,25 +9,44 @@ function Header() {
    const [navi, setNavi] = useState(false);
    const [btnOn, setBtnOn] = useState(false);
    const [search, setSearch] = useState([]);
-   const [movieName, setMovieName] = useState();
+   const [movieName, setMovieName] = useState('');
    
-   const changeHandler = (e) =>{
-      setMovieName(e.target.value);
-   }
-   console.log(movieName);
+   /* const getSearch = useCallback(async () => {
+      const searchPage = await axios.get(
+        `https://api.themoviedb.org/3/search/movie?api_key=${key}&language=ko-KR&query=${movieName}page=1&include_adult=false`
+      );
+      setSearch(searchPage.data.results);
+    }, [key, movieName]); */
+    
    useEffect(() => {
       const scrollHandler = () => {
          window.scrollY >= 100 ? setNavi(true) : setNavi(false)   ;
       }
       window.addEventListener('scroll', scrollHandler);
-      const getSearch = async() => {
-         const searchPage = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${key}&language=ko-KR&query=${movieName}page=1&include_adult=false`);
-         setSearch(searchPage.data);
-      }
-      getSearch();
+      
+      
       return () => window.removeEventListener('scroll', scrollHandler);
+      
    }, []);
+   const changeHandler = async (e) => {
+      const { movieName } = e.target;
+      setMovieName(movieName); // input의 값이 변경될 때마다 movieName 상태 업데이트
+      if (movieName === '') { // 검색어가 없는 경우 빈 배열로 검색 결과 업데이트
+        alert('검색어를 입력해 주세요.')
+        return;
+      }
+      try {
+        const searchPage = await axios.get(
+          `https://api.themoviedb.org/3/search/movie?api_key=${key}&language=ko-KR&query=${movieName}&page=1&include_adult=false`
+        );
+        setSearch(searchPage.data.results);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    
    console.log(search);
+   console.log({movieName});
    return (
       <header>
          <nav className={navi ? 'navWrapper scrolled' : 'navWrapper'}>
@@ -46,7 +65,7 @@ function Header() {
             <div className="boxWrapper">
                <p className='pTitle'>영화 제목으로 검색해보세요</p>
                <div className='search'>
-                  <input className='inputSearch' value={movieName} type="text" placeholder='제목입력...' />
+                  <input className='inputSearch' defaultValue={movieName} type="text" placeholder='제목입력...'/>
                   <button onClick={changeHandler}>검색</button>
                </div>
             </div>
