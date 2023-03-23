@@ -1,6 +1,5 @@
-import axios from 'axios';
-import { useCallback, useEffect, useState } from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 import './layStyles/headStyle.scss';
 
@@ -10,6 +9,8 @@ function Header() {
    const [btnOn, setBtnOn] = useState(false);
    const [search, setSearch] = useState([]);
    const [movieName, setMovieName] = useState('');
+   
+   const navigate = useNavigate();
    
    /* const getSearch = useCallback(async () => {
       const searchPage = await axios.get(
@@ -34,11 +35,11 @@ function Header() {
         return;
       }
       try {
-        const searchPage = await axios.get(
+        /* const searchPage = await axios.get(
           `https://api.themoviedb.org/3/search/movie?api_key=${key}&language=ko-KR&query=${movieName}&page=1&include_adult=false`
         );
-        setSearch(searchPage.data.results);
-        Navigate(`/search/${search.id}`);
+        setSearch(searchPage.data.results); */
+        navigate(`/search/${movieName}`);
         
       } catch (error) {
         console.error(error);
