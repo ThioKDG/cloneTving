@@ -8,18 +8,34 @@
         margin: 0 auto;
         overflow: hidden;
         .searchArea{
-            
+            .resultH2{
+                font-size:30px;
+                font-weight:800;
+                color:#fff;
+            }
         }
         .resultArea{
             .areaList{
                 display: flex;
                 flex-wrap: wrap;
-                
+                justify-content: space-around;    
+                gap:50px 40px;
                 li{
                     display: flex;
-                    gap:50px;
+                    flex-direction: column;
                     justify-content: space-between;
-                    max-width:250px;
+                    gap:20px;
+                    min-width:250px;
+                    .resultH3{
+                        font-size:20px;
+                        color:#fff;
+                        font-weight:400;
+                    }
+                    .posterWrapper{
+                        img{
+                            max-height:355px;
+                        }
+                    }
                     
                 }
             }
