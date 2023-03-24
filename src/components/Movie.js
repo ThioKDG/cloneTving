@@ -24,7 +24,7 @@ function Movie({ program }) {
          nextSlideMessage : '다음 슬라이드'
       }
    };
-   console.log(program.title);
+   // console.log(program.title);
    const imageUrl = 'https://image.tmdb.org/t/p/original';
 
    return (

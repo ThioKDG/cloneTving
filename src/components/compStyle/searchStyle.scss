@@ -1,0 +1,29 @@
+@import '../../assets/style/variable.scss';
+
+.resultBox{
+    width:100%;
+    height:100%;
+    .wrapper{
+        width:90%;
+        margin: 0 auto;
+        overflow: hidden;
+        .searchArea{
+            
+        }
+        .resultArea{
+            .areaList{
+                display: flex;
+                flex-wrap: wrap;
+                
+                li{
+                    display: flex;
+                    gap:50px;
+                    justify-content: space-between;
+                    max-width:250px;
+                    
+                }
+            }
+            
+        }
+    }
+}

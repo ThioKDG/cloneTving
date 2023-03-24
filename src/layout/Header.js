@@ -40,6 +40,7 @@ function Header() {
         );
         setSearch(searchPage.data.results); */
         navigate(`/search/${movieName}`);
+        setBtnOn(false);
         
       } catch (error) {
         console.error(error);
