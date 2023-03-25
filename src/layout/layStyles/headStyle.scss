@@ -84,16 +84,17 @@ header{
                width:80%;
                color:#fff;
                border:2px solid #fff;
-               border-radius: 20px;
+               border-radius: 25px;
                padding:10px 15px;
                background:none;
                margin-right:10px;
-               vertical-align: bottom;
+               vertical-align: top;
                font-weight:400;
                font-size:25px;
                &::placeholder{
                   color:#999;
-                  font-weight:600;
+                  font-weight:400;
+                  font-style: italic;
                }
             }
             button{
@@ -102,7 +103,7 @@ header{
                font-size:20px;
                font-weight:600;
                color:#fff;
-               padding:1px 15px;
+               padding:10px 15px;
                margin-bottom:5px;
                cursor: pointer;
                transition: .3s;

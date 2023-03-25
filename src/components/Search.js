@@ -28,7 +28,7 @@ function Search() {
             <section className='resultBox'>
                 <div className="wrapper">
                     <div className='searchArea'>
-                        <h2 className='resultH2'>{name} &#40;으&#41; 로 검색한 영화들입니다.</h2>
+                        <h2 className='resultH2'>{name} &#40;으&#41;로 검색한 영화들입니다.</h2>
                     </div>
                     <div className="resultArea">
                         <ul className='areaList'>

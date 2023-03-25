@@ -55,7 +55,7 @@ function Movie({ program }) {
                         onClick={() => evtClick(item.id)}
                      >
                         <img src={ imageUrl + item.poster_path } alt={item.title} />
-                        <h3 className="itemTit">{item.title}</h3>
+                        <h3 className="itemTit">{(item.title.length >= 18) ? `${item.title.slice(0, 15)}...` : `${item.title}`}</h3>
                      </div>
                   </SwiperSlide>
                ))}
