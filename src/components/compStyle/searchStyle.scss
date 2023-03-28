@@ -22,6 +22,17 @@
                 flex-wrap: wrap;
                 justify-content: space-around;    
                 gap:50px 40px;
+                .noResult{
+                    font-size:50px;
+                    text-align: center;
+                    font-weight:600;
+                    color:#fff;
+                    padding:50px 0;
+                    transition: .5s;
+                    &:hover{
+                        color:#999;
+                    }
+                }
                 li{
                     display: flex;
                     flex-direction: column;

@@ -32,14 +32,17 @@ function Search() {
                     </div>
                     <div className="resultArea">
                         <ul className='areaList'>
-                            {searchResult && searchResult.map((item) => (
-                                <li key={item.id} onClick={() => {navigation(`/cont/${item.id}`)}}>
-                                    <div className='posterWrapper'>
-                                        <img src={ imageUrl + item.poster_path } alt={item.name} />
-                                    </div>
-                                    <h3 className='resultH3'>{(item.title.length >= 18) ? `${item.title.slice(0,15)} ...` : `${item.title}` }</h3>
-                                </li>
-                            ))}
+                            { searchResult.lenght > 0 ? (
+                                searchResult.map((item) => (
+                                    <li key={item.id} onClick={() => {navigation(`/cont/${item.id}`)}}>
+                                        <div className='posterWrapper'>
+                                            <img src={ imageUrl + item.poster_path } alt={item.name} />
+                                        </div>
+                                        <h3 className='resultH3'>{(item.title.length >= 18) ? `${item.title.slice(0,15)} ...` : `${item.title}` }</h3>
+                                    </li>
+                                ))
+                                ) : (<li><h3 className='noResult'>검색하신 결과의 내용이 없습니다.</h3></li>)
+                            }
                         </ul>
                     </div>
                 </div>
