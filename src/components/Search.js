@@ -21,7 +21,8 @@ function Search() {
         }
         getResult();
     }, [name]);
-    /* console.log(searchResult[0].id); */
+    
+    console.log(searchResult);
     
     return (
         <>
@@ -32,7 +33,7 @@ function Search() {
                     </div>
                     <div className="resultArea">
                         <ul className='areaList'>
-                            { searchResult.lenght > 0 ? (
+                            { searchResult.lenght > 0 ? (<li><h3 className='noResult'>검색하신 결과의 내용이 없습니다.</h3></li>) : (
                                 searchResult.map((item) => (
                                     <li key={item.id} onClick={() => {navigation(`/cont/${item.id}`)}}>
                                         <div className='posterWrapper'>
@@ -41,7 +42,7 @@ function Search() {
                                         <h3 className='resultH3'>{(item.title.length >= 18) ? `${item.title.slice(0,15)} ...` : `${item.title}` }</h3>
                                     </li>
                                 ))
-                                ) : (<li><h3 className='noResult'>검색하신 결과의 내용이 없습니다.</h3></li>)
+                                )
                             }
                         </ul>
                     </div>
