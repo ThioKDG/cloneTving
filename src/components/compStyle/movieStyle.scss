@@ -2,7 +2,10 @@
    padding: 0 3.791em;
    .movieArticle{
       width:100%;
-      
+      margin-bottom:50px;
+      &:last-child{
+         margin:0;
+      }
       .titleFlex{
          display: flex;
          width:100%;
