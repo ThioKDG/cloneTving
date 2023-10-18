@@ -22,7 +22,7 @@ function Header() {
   }, []);
 
   /* 헤더 검색창 관련 함수 */
-  const changeHandler = async () => {
+  function changeHandler() {
     if (movieName === "") {
       alert("검색어를 입력해 주세요.");
       return;
@@ -30,10 +30,11 @@ function Header() {
     try {
       navigate(`/search/${movieName}`);
       setBtnOn(false);
+      setMovieName("");
     } catch (error) {
       console.error(error);
     }
-  };
+  }
   const changeInputHandler = (e) => {
     const { value } = e.target;
     setMovieName(value);
@@ -51,6 +52,7 @@ function Header() {
           className="searchBtn"
           onClick={() => {
             btnOn ? setBtnOn(false) : setBtnOn(true);
+            document.querySelector(".search input").value = "";
           }}
         >
           <svg

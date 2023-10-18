@@ -20,8 +20,9 @@
             .areaList{
                 display: flex;
                 flex-wrap: wrap;
-                justify-content: space-around;    
+                justify-content: space-between;    
                 gap:50px 40px;
+                padding:20px;
                 .noResult{
                     font-size:50px;
                     text-align: center;
@@ -40,6 +41,7 @@
                     gap:20px;
                     min-width:250px;
                     cursor: pointer;
+                    transition: .5s ease;
                     .resultH3{
                         font-size:20px;
                         color:#fff;
@@ -51,7 +53,9 @@
                             max-height:355px;
                         }
                     }
-                    
+                    &:hover{
+                        transform: scale(1.1);
+                    }
                 }
             }
             
